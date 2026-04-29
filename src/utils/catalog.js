@@ -1,17 +1,8 @@
 import catalogData from '../../data.json';
 
-/** @typedef {{ label: string; value: string }} ItemProp */
-/** @typedef {{ itemname: string; category: string; image: string; itemprops: ItemProp[] }} CatalogItem */
-
-/** @type {CatalogItem[]} */
 export const items = catalogData;
 
-/**
- * @param {CatalogItem[]} list
- * @returns {Record<string, { item: CatalogItem; index: number }[]>}
- */
 export function groupByCategory(list) {
-  /** @type {Record<string, { item: CatalogItem; index: number }[]>} */
   const map = {};
   list.forEach((item, index) => {
     const key = item.category;
@@ -21,12 +12,8 @@ export function groupByCategory(list) {
   return map;
 }
 
-/** Category display order for consistent layout */
 const CATEGORY_ORDER = ['Cars', 'Bikes', 'Phones', 'Computers'];
 
-/**
- * @param {Record<string, { item: CatalogItem; index: number }[]>} grouped
- */
 export function sortedCategoryKeys(grouped) {
   const keys = Object.keys(grouped);
   keys.sort((a, b) => {
